@@ -1,0 +1,39 @@
+<form [formGroup]="form" class="filters" aria-label="Flight filters">
+  <mat-form-field appearance="outline" subscriptSizing="dynamic">
+    <mat-label>Search by callsign</mat-label>
+    <input matInput formControlName="search" placeholder="e.g. AIC101" autocomplete="off" />
+    <mat-icon matSuffix aria-hidden="true">search</mat-icon>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" subscriptSizing="dynamic">
+    <mat-label>Status</mat-label>
+    <mat-select formControlName="status">
+      <mat-option value="">All statuses</mat-option>
+      @for (status of statuses; track status) {
+        <mat-option [value]="status">{{ status }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" subscriptSizing="dynamic">
+    <mat-label>Origin</mat-label>
+    <mat-select formControlName="origin">
+      <mat-option value="">All origins</mat-option>
+      @for (airport of origins; track airport.code) {
+        <mat-option [value]="airport.code">{{ airport.city }} ({{ airport.code }})</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" subscriptSizing="dynamic">
+    <mat-label>Destination</mat-label>
+    <mat-select formControlName="destination">
+      <mat-option value="">All destinations</mat-option>
+      @for (airport of destinations; track airport.code) {
+        <mat-option [value]="airport.code">{{ airport.city }} ({{ airport.code }})</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-stroked-button type="button" (click)="reset()">Reset</button>
+</form>

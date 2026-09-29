@@ -1,0 +1,81 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 100%;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.content {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 16px;
+}
+
+.map-column {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 0;
+}
+
+.map-wrapper {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.side-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 0;
+}
+
+.error {
+  margin: 0;
+  padding: 10px 14px;
+  border-radius: 8px;
+  color: var(--delayed);
+  border: 1px solid var(--delayed);
+}
+
+.loading {
+  padding: 24px;
+  color: var(--muted);
+}
+
+// tablet and smaller: stack everything and let the page scroll
+@media (max-width: 1100px) {
+  :host {
+    height: auto;
+  }
+
+  .dashboard {
+    height: auto;
+  }
+
+  .content {
+    grid-template-columns: 1fr;
+  }
+
+  .map-wrapper {
+    flex: none;
+    height: 55vh;
+    min-height: 380px;
+  }
+
+  .side-panel {
+    max-height: 560px;
+  }
+}

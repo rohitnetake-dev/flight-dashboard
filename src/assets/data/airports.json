@@ -1,0 +1,16 @@
+[
+  { "code": "BOM", "name": "Chhatrapati Shivaji Maharaj International", "city": "Mumbai", "lat": 19.0896, "lng": 72.8656 },
+  { "code": "DEL", "name": "Indira Gandhi International", "city": "Delhi", "lat": 28.5562, "lng": 77.1 },
+  { "code": "BLR", "name": "Kempegowda International", "city": "Bengaluru", "lat": 13.1986, "lng": 77.7066 },
+  { "code": "HYD", "name": "Rajiv Gandhi International", "city": "Hyderabad", "lat": 17.2403, "lng": 78.4294 },
+  { "code": "MAA", "name": "Chennai International", "city": "Chennai", "lat": 12.9941, "lng": 80.1709 },
+  { "code": "CCU", "name": "Netaji Subhas Chandra Bose International", "city": "Kolkata", "lat": 22.6547, "lng": 88.4467 },
+  { "code": "AMD", "name": "Sardar Vallabhbhai Patel International", "city": "Ahmedabad", "lat": 23.0772, "lng": 72.6347 },
+  { "code": "PNQ", "name": "Pune Airport", "city": "Pune", "lat": 18.5822, "lng": 73.9197 },
+  { "code": "GOI", "name": "Manohar International", "city": "Goa", "lat": 15.3808, "lng": 73.8314 },
+  { "code": "COK", "name": "Cochin International", "city": "Kochi", "lat": 10.152, "lng": 76.4019 },
+  { "code": "JAI", "name": "Jaipur International", "city": "Jaipur", "lat": 26.8242, "lng": 75.8122 },
+  { "code": "LKO", "name": "Chaudhary Charan Singh International", "city": "Lucknow", "lat": 26.7606, "lng": 80.8893 },
+  { "code": "DXB", "name": "Dubai International", "city": "Dubai", "lat": 25.2532, "lng": 55.3657 },
+  { "code": "SIN", "name": "Changi Airport", "city": "Singapore", "lat": 1.3644, "lng": 103.9915 }
+]

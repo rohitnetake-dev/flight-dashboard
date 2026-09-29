@@ -1,0 +1,49 @@
+<section class="details" aria-labelledby="details-title">
+  <header>
+    <h2 id="details-title">Flight details</h2>
+    @if (flight) {
+      <button mat-icon-button type="button" (click)="closed.emit()" aria-label="Close flight details">
+        <mat-icon>close</mat-icon>
+      </button>
+    }
+  </header>
+
+  @if (flight) {
+    <dl>
+      <div>
+        <dt>Flight number</dt>
+        <dd>{{ flight.flightNumber }}</dd>
+      </div>
+      <div>
+        <dt>Callsign</dt>
+        <dd>{{ flight.callsign }}</dd>
+      </div>
+      <div>
+        <dt>Aircraft type</dt>
+        <dd>{{ flight.aircraftType }}</dd>
+      </div>
+      <div>
+        <dt>Origin</dt>
+        <dd>{{ flight.origin.city }} ({{ flight.origin.code }})</dd>
+      </div>
+      <div>
+        <dt>Destination</dt>
+        <dd>{{ flight.destination.city }} ({{ flight.destination.code }})</dd>
+      </div>
+      <div>
+        <dt>Status</dt>
+        <dd><app-status-badge [status]="flight.status" /></dd>
+      </div>
+      <div>
+        <dt>Estimated departure</dt>
+        <dd>{{ flight.estimatedDeparture }} UTC</dd>
+      </div>
+      <div>
+        <dt>Estimated arrival</dt>
+        <dd>{{ flight.estimatedArrival }} UTC</dd>
+      </div>
+    </dl>
+  } @else {
+    <p class="empty">Select a flight on the map or from the list to see its details.</p>
+  }
+</section>

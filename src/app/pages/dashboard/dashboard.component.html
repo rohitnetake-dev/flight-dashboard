@@ -1,0 +1,41 @@
+@if (vm$ | async; as vm) {
+  <div class="dashboard">
+    @if (hasError) {
+      <p class="error" role="alert">
+        Could not load flight data. Check that the JSON files in assets/data are available.
+      </p>
+    }
+
+    <app-kpi-cards [kpis]="vm.kpis" />
+
+    <div class="content">
+      <section class="map-column">
+        <app-filter-bar
+          [origins]="vm.origins"
+          [destinations]="vm.destinations"
+          (filtersChange)="onFiltersChange($event)"
+        />
+        <div class="map-wrapper">
+          <app-flight-map
+            [flights]="vm.flights"
+            [airports]="vm.airports"
+            [selectedFlight]="vm.selectedFlight"
+            [darkMode]="vm.isDark"
+            (flightSelected)="selectFlight($event)"
+          />
+        </div>
+      </section>
+
+      <aside class="side-panel" aria-label="Flight information">
+        <app-flight-details [flight]="vm.selectedFlight" (closed)="clearSelection()" />
+        <app-flight-list
+          [flights]="vm.flights"
+          [selectedId]="vm.selectedFlight?.id ?? null"
+          (flightSelected)="selectFlight($event)"
+        />
+      </aside>
+    </div>
+  </div>
+} @else {
+  <p class="loading">Loading flights...</p>
+}

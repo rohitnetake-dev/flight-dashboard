@@ -1,0 +1,17 @@
+<mat-toolbar class="app-toolbar">
+  <mat-icon aria-hidden="true">flight</mat-icon>
+  <h1 class="title">Flight Operations</h1>
+  <span class="spacer"></span>
+  <button
+    mat-icon-button
+    type="button"
+    (click)="toggleTheme()"
+    [attr.aria-label]="(isDark$ | async) ? 'Switch to light mode' : 'Switch to dark mode'"
+  >
+    <mat-icon>{{ (isDark$ | async) ? 'light_mode' : 'dark_mode' }}</mat-icon>
+  </button>
+</mat-toolbar>
+
+<main>
+  <router-outlet />
+</main>

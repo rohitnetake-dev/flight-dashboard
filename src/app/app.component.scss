@@ -1,0 +1,28 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.app-toolbar {
+  flex-shrink: 0;
+  gap: 10px;
+  background: var(--toolbar-bg);
+  color: #fff;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.spacer {
+  flex: 1;
+}
+
+main {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+}

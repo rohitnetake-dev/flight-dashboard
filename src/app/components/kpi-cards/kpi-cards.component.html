@@ -1,0 +1,11 @@
+<section class="kpis" aria-label="Flight summary">
+  @for (card of cards; track card.label) {
+    <div [class]="'kpi kpi-' + card.type">
+      <mat-icon class="icon" aria-hidden="true">{{ card.icon }}</mat-icon>
+      <div>
+        <div class="value">{{ card.value }}</div>
+        <div class="label">{{ card.label }}</div>
+      </div>
+    </div>
+  }
+</section>

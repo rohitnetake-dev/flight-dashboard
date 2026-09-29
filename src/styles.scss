@@ -1,0 +1,169 @@
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+$primary: mat.define-palette(mat.$blue-palette, 700);
+$accent: mat.define-palette(mat.$cyan-palette, 600);
+$typography: mat.define-typography-config($font-family: '"IBM Plex Sans", sans-serif');
+
+$light-theme: mat.define-light-theme((
+  color: (primary: $primary, accent: $accent),
+  typography: $typography,
+  density: 0
+));
+
+$dark-theme: mat.define-dark-theme((
+  color: (primary: mat.define-palette(mat.$light-blue-palette, 300), accent: $accent)
+));
+
+@include mat.all-component-themes($light-theme);
+@include mat.form-field-density(-2);
+
+.dark-theme {
+  @include mat.all-component-colors($dark-theme);
+}
+
+// ---- colours used by our own components ----
+:root {
+  --bg: #eef2f7;
+  --surface: #ffffff;
+  --surface-alt: #f2f5f9;
+  --text: #14213a;
+  --muted: #5d6b82;
+  --border: #d7dfea;
+  --brand: #0b3d91;
+  --toolbar-bg: #0b2a5b;
+
+  --active: #1b7f4b;
+  --delayed: #b85400;
+  --arrived: #5d6b82;
+  --scheduled: #1e5fc4;
+}
+
+.dark-theme {
+  --bg: #0a1322;
+  --surface: #111d33;
+  --surface-alt: #182842;
+  --text: #e7edf7;
+  --muted: #9fb0c8;
+  --border: #243652;
+  --brand: #6aa6ff;
+  --toolbar-bg: #0d1a30;
+
+  --active: #4cd08a;
+  --delayed: #ffa04d;
+  --arrived: #9fb0c8;
+  --scheduled: #6aa6ff;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+:focus-visible {
+  outline: 2px solid #0091ea;
+  outline-offset: 2px;
+}
+
+// ---- status badge (used by the badge component and the map popup) ----
+.status-badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--c);
+  background: color-mix(in srgb, var(--c) 16%, transparent);
+
+  &.status-active { --c: var(--active); }
+  &.status-delayed { --c: var(--delayed); }
+  &.status-arrived { --c: var(--arrived); }
+  &.status-scheduled { --c: var(--scheduled); }
+}
+
+// ---- leaflet markers and popups (rendered outside component styles) ----
+.plane-icon {
+  background: none;
+  border: none;
+}
+
+.plane-marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  box-sizing: border-box;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
+
+  svg {
+    width: 18px;
+    height: 18px;
+    fill: #fff;
+  }
+
+  &.status-active { background: #1b9c5c; }
+  &.status-delayed { background: #e67300; }
+  &.status-arrived { background: #66768f; }
+  &.status-scheduled { background: #2a6fdb; }
+
+  &.selected {
+    box-shadow: 0 0 0 4px rgba(0, 145, 234, 0.55), 0 1px 4px rgba(0, 0, 0, 0.45);
+  }
+}
+
+.flight-popup {
+  min-width: 190px;
+  font-family: 'IBM Plex Sans', sans-serif;
+
+  .popup-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 6px;
+    font-size: 1rem;
+  }
+
+  dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 2px 12px;
+    margin: 0;
+  }
+
+  dt { color: var(--muted); }
+  dd { margin: 0; text-align: right; }
+}
+
+.dark-theme {
+  // OSM only ships light tiles, so dark mode inverts and re-tints them instead
+  .leaflet-tile-pane {
+    filter: invert(1) hue-rotate(180deg) brightness(0.85) contrast(0.9);
+  }
+
+  .leaflet-popup-content-wrapper,
+  .leaflet-popup-tip,
+  .leaflet-tooltip {
+    background: var(--surface);
+    color: var(--text);
+  }
+
+  .leaflet-tooltip {
+    border-color: var(--border);
+  }
+
+  .leaflet-tooltip-top:before {
+    border-top-color: var(--surface);
+  }
+}

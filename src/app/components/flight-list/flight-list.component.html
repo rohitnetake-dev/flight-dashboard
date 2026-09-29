@@ -1,0 +1,30 @@
+<section class="list" aria-labelledby="list-title">
+  <header>
+    <h2 id="list-title">Flights</h2>
+    <span class="count" aria-live="polite">{{ flights.length }} shown</span>
+  </header>
+
+  @if (flights.length) {
+    <ul>
+      @for (flight of flights; track flight.id) {
+        <li>
+          <button
+            type="button"
+            class="item"
+            [class.selected]="flight.id === selectedId"
+            [attr.aria-pressed]="flight.id === selectedId"
+            (click)="flightSelected.emit(flight)"
+          >
+            <span class="info">
+              <span class="number">{{ flight.flightNumber }}</span>
+              <span class="route">{{ flight.callsign }}, {{ flight.origin.code }} to {{ flight.destination.code }}</span>
+            </span>
+            <app-status-badge [status]="flight.status" />
+          </button>
+        </li>
+      }
+    </ul>
+  } @else {
+    <p class="empty">No flights match the current filters. Change or reset the filters to see more.</p>
+  }
+</section>
